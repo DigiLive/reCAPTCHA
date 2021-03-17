@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DigiLive\\ReCaptcha\\\\": "src/",
+            "DigiLive\\ReCaptcha\\": "src/",
             "DigiLive\\ReCaptcha\\Tests\\": "tests/"
         }
     }
