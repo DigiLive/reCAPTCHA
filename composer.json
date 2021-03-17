@@ -1,0 +1,30 @@
+{
+    "name": "digilive/recaptcha",
+    "description": "Google reCAPTCHA v3 integration",
+    "keywords": [
+        "reCAPTCHA"
+    ],
+    "type": "library",
+    "minimum-stability": "stable",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "DigiLive",
+            "email": "info@digilive.nl"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "digilive/git-changelog": "^1"
+    },
+    "autoload": {
+        "psr-4": {
+            "DigiLive\\ReCaptcha\\\\": "src/",
+            "DigiLive\\ReCaptcha\\Tests\\": "tests/"
+        }
+    }
+}
