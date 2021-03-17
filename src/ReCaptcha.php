@@ -114,7 +114,7 @@ HTML;
             $responseArray['success'] &&
             $responseArray['action'] == $this->reCaptchaAction &&
             $responseArray['score'] >= $this->threshold &&
-            $responseArray == $_SERVER['SERVER_NAME'];
+            $responseArray['hostname'] == $_SERVER['SERVER_NAME'];
     }
 
     /**
