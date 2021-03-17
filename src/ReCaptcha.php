@@ -2,56 +2,56 @@
 
 declare(strict_types=1);
 
-namespace DigiLive\reCAPTCHA;
+namespace DigiLive\ReCaptcha;
 
 /**
- * Class reCAPTCHA
+ * Class ReCaptcha
  *
- * @see     https://developers.google.com/reCAPTCHA/docs/v3
- * @see     https://www.phptreepoint.com/google-reCAPTCHA-v3-in-php/
- * @package DigiLive\reCAPTCHA
+ * @see     https://developers.google.com/recaptcha/docs/v3
+ * @see     https://www.phptreepoint.com/google-recaptcha-v3-in-php/
+ * @package DigiLive\ReCaptcha
  */
-class reCAPTCHA
+class ReCaptcha
 {
     /**
-     * Url to Googles reCAPTCHA v3 API.
+     * Url to Googles reCaptcha v3 API.
      */
-    public const API_URL = 'https://www.google.com/reCAPTCHA/api/siteverify';
+    public const API_URL = 'https://www.google.com/recaptcha/api/siteverify';
     /**
      * @var string JSON encoded string response from the API.
      */
     private string $apiResponse;
     /**
-     * @var string Secret reCAPTCHA key.
+     * @var string Secret reCaptcha key.
      * @see https://www.google.com/reCAPTCHA/admin
      */
-    private string $reCAPTCHASecretKey;
+    private string $reCaptchaSecretKey;
     /**
      * @var string Action value at the time of token generation.
      */
-    private string $reCAPTCHAAction;
+    private string $reCaptchaAction;
     /**
      * @var float Threshold value for defining human or bot request.
      */
-    private float $threshold;
+    private float $threshold = 0.5;
 
     /**
-     * reCAPTCHA constructor.
+     * ReCaptcha constructor.
      *
-     * @param   string  $reCAPTCHASecretKey  Secret reCAPTCHA key.
+     * @param   string  $reCaptchaSecretKey  Secret reCaptcha key.
      */
-    public function __construct(string $reCAPTCHASecretKey)
+    public function __construct(string $reCaptchaSecretKey)
     {
-        $this->reCAPTCHASecretKey = $reCAPTCHASecretKey;
+        $this->reCaptchaSecretKey = $reCaptchaSecretKey;
     }
 
     /**
-     * Get a html script tag for including googles reCAPTCHA V3 javascript to html.
+     * Get a html script tag for including googles reCaptcha V3 javascript to html.
      *
      * The script tag is either sent to the outputbuffer with appropriate response headers or return as a string.
      * Define to defer loading of the script by setting the last parameter.
      *
-     * @param   string  $siteKey  Public reCAPTCHA key.
+     * @param   string  $siteKey  Public reCaptcha key.
      * @param   bool    $render   Set to true to render the tag.
      * @param   bool    $defer    Set to True to include the defer attribute to the tag.
      *
@@ -61,7 +61,7 @@ class reCAPTCHA
     {
         $defer       = $defer ? 'defer' : '';
         $returnValue = <<<HTML
-    <script src="https://www.google.com/reCAPTCHA/api.js?render=$siteKey" $defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=$siteKey" $defer></script>
 HTML;
         if ($render) {
             header_remove();
@@ -83,11 +83,11 @@ HTML;
      */
     public function setAction(string $action)
     {
-        $this->reCAPTCHAAction = $action;
+        $this->reCaptchaAction = $action;
     }
 
     /**
-     * Set the threshold of the reCAPTCHA score for defining the request as human or bot.
+     * Set the threshold of the reCaptcha score for defining the request as human or bot.
      *
      * If the score is equal or greater than this value, the request is identified as a human request.
      * Any lower score will define the request as a bot request.
@@ -100,11 +100,11 @@ HTML;
     }
 
     /**
-     * Validate the response of the reCAPTCHA api.
+     * Validate the response of the reCaptcha api.
      *
      * This method returns true when the request is considered to be human.
      *
-     * @return bool True of Human request, false otherwise.
+     * @return bool True for Human requests, false otherwise.
      */
     public function validateResponse(): bool
     {
@@ -112,13 +112,13 @@ HTML;
 
         return
             $responseArray['success'] &&
-            $responseArray['action'] == $this->reCAPTCHAAction &&
+            $responseArray['action'] == $this->reCaptchaAction &&
             $responseArray['score'] >= $this->threshold &&
             $responseArray == $_SERVER['SERVER_NAME'];
     }
 
     /**
-     * Get a validation response from the reCAPTCHA api.
+     * Get a validation response from the reCaptcha api.
      *
      * E.g.
      * {
@@ -138,7 +138,7 @@ HTML;
             CURLOPT_URL            => self::API_URL,
             CURLOPT_POST           => true,
             CURLOPT_POSTFIELDS     => http_build_query(
-                ['secret' => $this->reCAPTCHASecretKey, 'response' => $_POST['token']]
+                ['secret' => $this->reCaptchaSecretKey, 'response' => $_POST['token']]
             ),
             CURLOPT_RETURNTRANSFER => true,
         ];
@@ -153,7 +153,7 @@ HTML;
     }
 
     /**
-     * Send the reCAPTCHA api response to the output buffer with appropriate response headers.
+     * Send the reCaptcha api response to the output buffer with appropriate response headers.
      */
     public function sendApiResponse()
     {
