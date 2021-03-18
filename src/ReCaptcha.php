@@ -134,6 +134,11 @@ HTML;
      */
     public function getApiResponse(): string
     {
+        if ($this->apiResponse) {
+            // Same data is only valid once.
+            return $this->apiResponse;
+        }
+
         $curlOptions = [
             CURLOPT_URL            => self::API_URL,
             CURLOPT_POST           => true,
