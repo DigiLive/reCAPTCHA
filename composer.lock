@@ -1,0 +1,79 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0b0e80226a8d839006aae457496b0976",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "digilive/git-changelog",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DigiLive/gitChangelog.git",
+                "reference": "c3ee707a16c25f9c8ce663feec1fd104481ae44b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DigiLive/gitChangelog/zipball/c3ee707a16c25f9c8ce663feec1fd104481ae44b",
+                "reference": "c3ee707a16c25f9c8ce663feec1fd104481ae44b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DigiLive\\GitChangelog\\": "src/",
+                    "DigiLive\\GitChangelog\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "DigiLive",
+                    "email": "info@digilive.nl",
+                    "homepage": "https://digilive.nl"
+                },
+                {
+                    "name": "Mario",
+                    "email": "leet31337@web.de"
+                }
+            ],
+            "description": "Generate a changelog from git commits of the local repository",
+            "keywords": [
+                "changelog",
+                "generator",
+                "git",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/DigiLive/gitChangelog/issues",
+                "source": "https://github.com/DigiLive/gitChangelog/tree/v1.0.0"
+            },
+            "time": "2020-12-16T08:43:49+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "^7.4",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
