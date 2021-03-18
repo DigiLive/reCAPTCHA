@@ -55,7 +55,7 @@ class ReCaptcha
      * @param   bool    $render   Set to true to render the tag.
      * @param   bool    $defer    Set to True to include the defer attribute to the tag.
      *
-     * @return string Script tag.
+     * @return void|string Script tag.
      */
     public static function getScriptTag(string $siteKey, bool $render = true, bool $defer = true): string
     {
