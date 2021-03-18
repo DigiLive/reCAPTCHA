@@ -81,7 +81,7 @@ HTML;
      *
      * @param   string  $action  Value of action at token generation.
      */
-    public function setAction(string $action)
+    public function setAction(string $action): void
     {
         $this->reCaptchaAction = $action;
     }
@@ -94,7 +94,7 @@ HTML;
      *
      * @param   float  $threshold  Limit value to identify hte request as human or bot.
      */
-    public function setThresholdScore(float $threshold)
+    public function setThresholdScore(float $threshold): void
     {
         $this->threshold = $threshold;
     }
@@ -155,7 +155,7 @@ HTML;
     /**
      * Send the reCaptcha api response to the output buffer with appropriate response headers.
      */
-    public function sendApiResponse()
+    public function sendApiResponse(): void
     {
         header_remove();
         header("Cache-Control: no-transform,public,max-age=300,s-maxage=900");
