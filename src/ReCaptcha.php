@@ -18,9 +18,9 @@ class ReCaptcha
      */
     public const API_URL = 'https://www.google.com/recaptcha/api/siteverify';
     /**
-     * @var string JSON encoded string response from the API.
+     * @var ?string JSON encoded string response from the API.
      */
-    private string $apiResponse;
+    private ?string $apiResponse = null;
     /**
      * @var string Secret reCaptcha key.
      * @see https://www.google.com/reCAPTCHA/admin
